@@ -80,7 +80,7 @@ if sys.version_info[0:2] == (3, 6):
 
 
 class Env(Generic[ObsType, ActType], metaclass=decorator):
-    r"""The main OpenAI Gym class.
+    """The main OpenAI Gym class.
 
     It encapsulates an environment with arbitrary behind-the-scenes dynamics.
     An environment can be partially or fully observed.
@@ -119,8 +119,9 @@ class Env(Generic[ObsType, ActType], metaclass=decorator):
     # Created
     _np_random: Optional[RandomNumberGenerator] = None
 
+    # https://www.geeksforgeeks.org/decorators-in-python/
     @property
-    def np_random(self) -> RandomNumberGenerator:
+    def np_random(self) -> RandomNumberGenerator:  # arrow is just annotation to show expected return type/unit
         """Returns the environment's internal :attr:`_np_random` that if not set will initialise with a random seed."""
         if self._np_random is None:
             self._np_random, seed = seeding.np_random()
